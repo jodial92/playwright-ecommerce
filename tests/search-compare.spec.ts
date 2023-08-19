@@ -2,14 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import HomePage from '../src/pages/HomePage';
 import SearchResultsPage from '../src/pages/SearchResultsPage';
 import ProductPage from '../src/pages/ProductPage';
-import fs from 'fs';
-import path from 'path';
-import { parse } from 'csv-parse/sync';
-
-const data = parse(fs.readFileSync(path.join(__dirname, '/data/products.csv')), {
-    columns: true,
-    skip_empty_lines: true
-  });
+import { data } from '../src/utils/DataProvider';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.amazon.com.mx');
